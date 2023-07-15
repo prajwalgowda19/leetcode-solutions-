@@ -1,24 +1,21 @@
 class Solution {
-    List<List<Integer>> ans = new ArrayList<>();
-    ArrayList<Integer> ls = new ArrayList<>();
-
-    public List<List<Integer>> combinationSum(int[] c, int target) {
-        cum(c, target, 0);
-        return ans;
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> res=new ArrayList<>();
+        generate(0,candidates,new ArrayList(),target,res);
+        return res;
     }
+    void generate(int index,int[] nums,List<Integer> curr,int target,List<List<Integer>> res)
+    {
+        if(target==0)
+        res.add(new ArrayList(curr));
+        if(target<0)
+        return ;
 
-    public void cum(int[] c, int target, int start) {
-        if (target == 0) {
-            ans.add(new ArrayList<>(ls)); 
-            return;
-        }
-
-        for (int i = start; i < c.length; i++) {
-            if (c[i] <= target) {
-                ls.add(c[i]);
-                cum(c, target - c[i], i); 
-                ls.remove(ls.size() - 1); 
-            }
-        }
+    for(int i=index;i<nums.length;i++)
+    {
+        curr.add(nums[i]);
+        generate(i,nums,curr,target-nums[i],res);
+        curr.remove(curr.size()-1);
+    }
     }
 }
