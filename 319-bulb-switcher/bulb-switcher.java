@@ -1,12 +1,7 @@
 class Solution {
     public int bulbSwitch(int n) {
-        if(n==0) return 0;
-        int ans=1;
-        for(int i=1;i<n;i++)
-        {
-            if(Math.pow(i,2)<=n)
-            ans=i;
-        }
+       int sq=(int)Math.sqrt(n);
+       int ans=(int)Math.floor(sq);
             return ans;
     }
 
