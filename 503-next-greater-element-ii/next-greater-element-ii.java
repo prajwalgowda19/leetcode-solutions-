@@ -20,13 +20,8 @@ class Solution {
         boolean flag=false;
         for(int i=start;i<checker.length;i++)
         {
-            if(ele==checker[i])
-                flag=true;
-            if(flag)
-            {
                 if(ele<checker[i])
                     return checker[i];
-            }
         }
         return -1;
     }
